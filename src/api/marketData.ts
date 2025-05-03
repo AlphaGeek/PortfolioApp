@@ -7,7 +7,7 @@ export default {
       response.data.bestMatches = response.data.bestMatches.filter((match: any) => match["3. type"] === "Equity")
       return response.data
     } catch(e) {
-      console.error("An error occurred while fetching the search results", e)
+      console.error("An error occurred while fetching the search results: ", e)
       return []
     }
   },
