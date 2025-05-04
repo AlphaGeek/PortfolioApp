@@ -1,8 +1,8 @@
 import TimeSeriesChart from "./Charts/TimeSeriesChart"
 import { useSelector } from "react-redux"
 
-function MarketData() {
-  const priceData = useSelector((state: any) => state.marketData.priceData)
+function MarketData(props: { symbol: string }) {
+    const priceData = useSelector((state: any) => state.marketData.priceData)
   return (
     <div>
       {priceData && priceData.length > 0 && (

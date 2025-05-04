@@ -5,14 +5,14 @@ function SearchResults(props: any) {
         {Array.isArray(props.searchResults) &&
           props.searchResults.map((result: any) => (
             <div
-              key={result["1. symbol"]}
+              key={result.symbol}
               className="search-results-item"
               onClick={() => props.onSelected(result)}
             >
-              <div>{result["2. name"]}</div>
+              <div>{result.name}</div>
               <div>
-                <span>{result["1. symbol"]}</span>&nbsp;:&nbsp;
-                <span>{result["4. region"]}</span>
+                <span>{result.symbol}</span>&nbsp;:&nbsp;
+                <span>{result.region}</span>
               </div>
             </div>
           ))}

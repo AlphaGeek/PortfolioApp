@@ -1,9 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import marketDataApi from "../api/marketData"
 
 const initialState = {
-  company: null,
-  priceData: null,
+  company: null
 }
 
 export const marketDataSlice = createSlice({
@@ -11,10 +9,7 @@ export const marketDataSlice = createSlice({
   initialState,
   reducers: {
     setCompany: (state, action) => {
-       state.company = action.payload
-       marketDataApi.getTimeSeriesWeekly(action.payload["1. symbol"]).then((response) => {
-          state.priceData = response.data
-        })
+      state.company = action.payload
     },
   }
 })

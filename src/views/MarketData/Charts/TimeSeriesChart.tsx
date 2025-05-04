@@ -3,8 +3,10 @@ import { useEffect } from "react"
 import "./TimeSeriesChart.scss"
 import * as Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
+import marketDataApi from "@/api/marketData"
 
 function TimeSeriesChart(props: any) {
+  
   const [options, setOptions] = React.useState({
     chart: {
       zoomType: "x",

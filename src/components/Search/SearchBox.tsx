@@ -14,7 +14,8 @@ function SearchBox() {
 
   async function search() {
     const results = await marketDataApi.searchStocks(searchTerm)
-    setSearchResults(results.bestMatches)
+    console.log("search results", results)
+    setSearchResults(results)
   }
 
   function onSelected(event: any) {

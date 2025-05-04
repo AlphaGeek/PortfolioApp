@@ -4,8 +4,7 @@ export default {
   async searchStocks(searchTerm:string) {
     try {
       const response = await $axios.get(`/api/v1/search/${searchTerm}`)
-      response.data.bestMatches = response.data.bestMatches.filter((match: any) => match["3. type"] === "Equity")
-      return response.data
+      return response.data.filter((match: any) => match.type === "Equity")
     } catch(e) {
       console.error("An error occurred while fetching the search results: ", e)
       return []

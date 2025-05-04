@@ -1,6 +1,6 @@
 import "./AppHeader.scss"
 import { useSelector, useDispatch } from "react-redux"
-import SearchBox from "../Search/SearchBox"
+import SearchBox from "@/components/Search/SearchBox"
 import {
   setIsAuthenticated,
   setJwtToken,
@@ -8,6 +8,7 @@ import {
 } from "../../store/userSlice"
 import jwt_decode from "jwt-decode"
 import { GoogleLogin } from "@react-oauth/google"
+import * as localforage from "localforage"
 
 function AppHeader() {
   const isAuthenticated = useSelector(
@@ -18,7 +19,7 @@ function AppHeader() {
 
   const onSuccess = (response: any) => {
     const user = jwt_decode(response.credential)
-    sessionStorage.setItem("portfolio-token", response.credential)
+    localforage.setItem("portfolio-token", response.credential)
     dispatch(setJwtToken(response.credential))
     dispatch(setUserInfo(user))
     dispatch(setIsAuthenticated(true))
@@ -28,7 +29,7 @@ function AppHeader() {
   }
 
   function logout() {
-    localStorage.removeItem("portfolio-login")
+    localforage.removeItem("portfolio-login")
     window.location.reload()
   }
 
