@@ -6,7 +6,7 @@ div.search-box {
   border: 1px solid #ccc;
   padding: 0px;
   border-radius: 6px;
-  height: 35px;
+  height: 37px;
   div.search-input-container {
     display: flex;
     div.search-input {
@@ -22,9 +22,10 @@ div.search-box {
           border: 0 !important;
           box-shadow: none !important;
         }
-        &:enabled:focus {
+        &:focus-visible {
           border: 0 !important;
           box-shadow: none !important;
+          outline: none !important;
         }
       }
     }

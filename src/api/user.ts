@@ -1,10 +1,10 @@
 import { $axios } from "./api";
+import { UserInfo } from "@/store/userSlice"
 
 export default {
-  async addUpdateUser(user) {
+  async addUpdateUser(user:UserInfo) {
     try {
-      
-      const response = await $axios.post(`/api/v1/user/add_update`, user)
+      const response = await $axios.post(`/api/v1/add_update`, user)
       return response.data
     } catch(e) {
       console.error("An error occurred while fetching the search results", e)

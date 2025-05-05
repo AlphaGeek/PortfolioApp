@@ -5,7 +5,7 @@ import { store } from "./store/index"
 import { Provider } from "react-redux"
 import * as React from "react"
 import { GoogleOAuthProvider } from "@react-oauth/google"
-import * as localforage from "localforage"
+import localforage from "localforage"
 
 localforage.config({
   name: "portfolio",

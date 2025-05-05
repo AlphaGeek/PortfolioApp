@@ -1,7 +1,7 @@
 import axios from "axios";
+import localforage from "localforage"
+import jwtDecode from "jwt-decode"
 
-let token = sessionStorage.getItem("portfolio-token")
-  
 export const $axios = axios.create({
   baseURL: "http://127.0.0.1:5000",
   headers: {
@@ -11,10 +11,18 @@ export const $axios = axios.create({
   withCredentials: false
 })
 
-$axios.interceptors.request.use(function (config) {
+$axios.interceptors.request.use(async function (config) {
+  const token = await localforage.getItem("portfolio-token")
+  // no token means the request does not require authentication, user not logged in
   if (!token) {
-    //token = useSelector((state: any) => state.user.jwtToken)
-    token = sessionStorage.getItem("portfolio-token")
+    return config;
+  }
+  // user must be logged in, check if token is expired
+  const decodedToken = jwtDecode<any>(token);
+  if (decodedToken.exp < Date.now() / 1000) {
+    const controller = new AbortController();
+    controller.abort()
+    window.location.href = "/login"
   }
   config.headers.Authorization =  `Bearer ${token}`
   return config;
