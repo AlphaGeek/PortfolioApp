@@ -6,21 +6,23 @@ import marketDataApi from "../../api/marketData"
 import SearchResults from "./SearchResults"
 import { useDispatch } from "react-redux"
 import { setCompany } from "../../store/marketDataSlice"
+import { useNavigate } from "react-router-dom"
 
 function SearchBox() {
   const [searchTerm, setSearchTerm] = useState("")
   const [searchResults, setSearchResults] = useState([])
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   async function search() {
     const results = await marketDataApi.searchStocks(searchTerm)
-    console.log("search results", results)
     setSearchResults(results)
   }
 
-  function onSelected(event: any) {
-    dispatch(setCompany(event))
+  async function onSelected(event: any) {
+    await dispatch(setCompany(event))
     setSearchResults([])
+    navigate("/market-data")
   }
 
   function inputKeyPressed(key: any) {

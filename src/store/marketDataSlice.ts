@@ -1,7 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
+export interface CompanyInfo {
+    currency: string
+    marketClose: string
+    marketOpen: string
+    matchScore: string
+    name: string
+    region: string
+    symbol: string
+    timezone: string
+    type: string
+}
 
 const initialState = {
-  company: null
+  company: null as CompanyInfo | null,
 }
 
 export const marketDataSlice = createSlice({
@@ -9,8 +21,9 @@ export const marketDataSlice = createSlice({
   initialState,
   reducers: {
     setCompany: (state, action) => {
+      console.log('setCompany action', action)  
       state.company = action.payload
-    },
+    }
   }
 })
 

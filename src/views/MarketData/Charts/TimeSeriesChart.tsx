@@ -1,13 +1,12 @@
-import * as React from "react"
+import { useState } from "react"
 import { useEffect } from "react"
 import "./TimeSeriesChart.scss"
 import * as Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
-import marketDataApi from "@/api/marketData"
+import MarketDataApi from "@/api/marketData"
 
 function TimeSeriesChart(props: any) {
-  
-  const [options, setOptions] = React.useState({
+  const [options, setOptions] = useState({
     chart: {
       zoomType: "x",
       height: "57.5vh",
@@ -77,43 +76,48 @@ function TimeSeriesChart(props: any) {
   })
 
   useEffect(() => {
-    setOptions({
-      ...options,
-      series: [
-        {
-          type: "area",
-          name: props.name,
-          data: props.chartData,
-        },
-      ],
-      title: {
-        text: props.title || "",
-      },
-      xAxis: {
+    MarketDataApi.getTimeSeriesWeekly(props.symbol).then((response) => {
+      const pData = response["Weekly Adjusted Time Series"]
+      const chartData = Object.keys(pData).map((key) => [
+        new Date(key).getTime(),
+        parseFloat(pData[key]["4. close"]),
+      ])
+
+      console.log("chart data", chartData)
+      const newOptions = {
+        ...options,
+        series: [
+          {
+            type: "area",
+            name: props.symbol,
+            data: chartData,
+          },
+        ],
         title: {
-          text: props.xAxisTitle || "",
+          text: props.title || "",
         },
-        type: "",
-        labels: {
-          formatter: function (): string {
-            return ""
+        xAxis: {
+          title: {
+            text: props.xAxisTitle || "",
+          },
+          type: "",
+          labels: {
+            formatter: function (): string {
+              return ""
+            },
           },
         },
-      },
-      yAxis: {
-        title: {
-          text: props.yAxisTitle || "",
+        yAxis: {
+          title: {
+            text: props.yAxisTitle || "",
+          },
         },
-      },
+      }
+      console.log("NEW options", newOptions)
+      setOptions(newOptions)
+      console.log("chart options", options)
     })
-  }, [
-    props.chartData,
-    props.title,
-    props.xAxisTitle,
-    props.yAxisTitle,
-    props.name,
-    options,
-  ])
+  }, [props.symbol, props.title, props.xAxisTitle, props.yAxisTitle])
 
   return (
     <div className="timeSeriesChartContainer">

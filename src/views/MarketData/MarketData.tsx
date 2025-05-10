@@ -1,13 +1,13 @@
 import TimeSeriesChart from "./Charts/TimeSeriesChart"
 import { useSelector } from "react-redux"
 
-function MarketData(props: { symbol: string }) {
-    const priceData = useSelector((state: any) => state.marketData.priceData)
+function MarketData() {
+  const symbol = useSelector((state: any) => state.marketData.company.symbol)
+
   return (
     <div>
-      {priceData && priceData.length > 0 && (
-        <TimeSeriesChart title="" chartData={priceData} />
-      )}
+      <h1>Market Data</h1>
+      {symbol && <TimeSeriesChart title="" symbol={symbol} />}
     </div>
   )
 }
