@@ -5,10 +5,12 @@ function MarketData() {
   const symbol = useSelector((state: any) => state.marketData.company.symbol)
 
   return (
-    <div>
-      <h1>Market Data</h1>
-      {symbol && <TimeSeriesChart title="" symbol={symbol} />}
-    </div>
+    <>
+      <div>
+        <h1>Market Data</h1>
+        {symbol && <TimeSeriesChart title="" symbol={symbol} />}
+      </div>
+    </>
   )
 }
 

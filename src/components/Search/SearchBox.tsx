@@ -5,7 +5,7 @@ import { InputText } from "primereact/inputtext"
 import marketDataApi from "../../api/marketData"
 import SearchResults from "./SearchResults"
 import { useDispatch } from "react-redux"
-import { setCompany } from "../../store/marketDataSlice"
+import { setCompany } from "../../store/slices/marketDataSlice"
 import { useNavigate } from "react-router-dom"
 
 function SearchBox() {

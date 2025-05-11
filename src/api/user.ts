@@ -1,5 +1,5 @@
 import { $axios } from "./api";
-import { UserInfo } from "@/store/userSlice"
+import { UserInfo } from "@/store/slices/userSlice"
 
 export default {
   async addUpdateUser(user:UserInfo) {

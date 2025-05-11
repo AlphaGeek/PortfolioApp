@@ -5,7 +5,7 @@ import {
   setIsAuthenticated,
   setJwtToken,
   setUserInfo,
-} from "../../store/userSlice"
+} from "../../store/slices/userSlice"
 import jwt_decode from "jwt-decode"
 import { GoogleLogin } from "@react-oauth/google"
 import * as localforage from "localforage"
