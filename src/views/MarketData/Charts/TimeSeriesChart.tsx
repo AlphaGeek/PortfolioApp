@@ -6,6 +6,7 @@ import { useSelector } from "react-redux"
 import HighchartsReact from "highcharts-react-official"
 import MarketDataApi from "@/api/marketData"
 import { useNavigate } from "react-router-dom"
+import moment from "moment"
 
 function PriceChart(props: any) {
   const navigate = useNavigate()
@@ -15,6 +16,7 @@ function PriceChart(props: any) {
   const [chartOptions, setChartOptions] = useState(timeSeriesChart)
 
   useEffect(() => {
+    console.log("useEffect props.symbol", props.symbol)
     if (!props?.symbol) {
       navigate("/")
     }
@@ -43,11 +45,6 @@ function PriceChart(props: any) {
             text: props.xAxisTitle || "",
           },
           type: "",
-          labels: {
-            formatter: function (): string {
-              return ""
-            },
-          },
         },
         yAxis: {
           title: {
@@ -55,17 +52,12 @@ function PriceChart(props: any) {
           },
         },
       }
-      console.log("NEW options", newOptions)
-      await setChartOptions(newOptions)
-      console.log("chart options", chartOptions)
+      console.log("newOptions", newOptions)
+      setChartOptions(newOptions)
     })
   }, [props.symbol, props.title, props.xAxisTitle, props.yAxisTitle])
 
-  return (
-    <div className="timeSeriesChartContainer">
-      <HighchartsReact highcharts={Highcharts} options={chartOptions} />
-    </div>
-  )
+  return <HighchartsReact highcharts={Highcharts} options={chartOptions} />
 }
 
 export default PriceChart

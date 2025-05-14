@@ -28,7 +28,7 @@ export default function Router() {
           element: <Login />,
         },
         {
-          path: "/market-data",
+          path: "/market-data/:symbol",
           element: <MarketData />,
         },
       ],

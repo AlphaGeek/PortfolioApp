@@ -22,7 +22,7 @@ function SearchBox() {
   async function onSelected(event: any) {
     await dispatch(setCompany(event))
     setSearchResults([])
-    navigate("/market-data")
+    navigate("/market-data/" + event.symbol)
   }
 
   function inputKeyPressed(key: any) {

@@ -4,17 +4,14 @@ import * as Highcharts from "highcharts"
 const initialState = {
   timeSeriesChart: {
     chart: {
-      zoomType: "x",
-      height: "57.5vh",
+      height: "300px",
+      type: "area",
     },
     title: {
       text: "",
     },
-    subtitle: {
-      text:
-        document.ontouchstart === undefined
-          ? "Click and drag in the plot area to zoom in"
-          : "Pinch the chart to zoom in",
+    credits: {
+      enabled: false,
     },
     xAxis: {
       type: "datetime",
@@ -45,9 +42,9 @@ const initialState = {
             y2: 1,
           },
           stops: [
-            [0, "#487eb0"],
-            [1, "#4cd137"],
-          ],
+            [0, '#0984e3'],
+            [1, '#e6f2fc']
+          ]
         },
         marker: {
           radius: 2,

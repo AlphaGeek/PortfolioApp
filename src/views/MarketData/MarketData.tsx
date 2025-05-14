@@ -1,14 +1,14 @@
 import TimeSeriesChart from "./Charts/TimeSeriesChart"
-import { useSelector } from "react-redux"
-
+import { useParams } from "react-router-dom"
 function MarketData() {
-  const symbol = useSelector((state: any) => state.marketData.company.symbol)
-
+  const { symbol } = useParams()
+  console.log("MarketData symbol", symbol)
   return (
     <>
       <div>
-        <h1>Market Data</h1>
-        {symbol && <TimeSeriesChart title="" symbol={symbol} />}
+        {symbol && symbol.trim().length > 0 && (
+          <TimeSeriesChart symbol={symbol} />
+        )}
       </div>
     </>
   )
