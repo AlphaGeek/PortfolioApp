@@ -15,7 +15,7 @@ AI.askClaude(
     )
   })
 
-AI.askOpenAI(
+/*AI.askOpenAI(
   "Hello, Open AI! Can you explain quantum computing in simple terms?"
 )
   .then((response) => {
@@ -27,6 +27,7 @@ AI.askOpenAI(
       error
     )
   })
+*/
 
 function App() {
   return (

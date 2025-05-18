@@ -1,7 +1,7 @@
 import { $axios } from "./api";
 
 export default {
-  /*async askOpenAI(prompt:string) {
+  async askOpenAI(prompt:string) {
     try {
       const data = {prompt}
       const response = await $axios.post('/api/v1/ai/askOpenAI', data)
@@ -11,7 +11,7 @@ export default {
       console.error("An error occurred while fetching the Open AI results: ", e)
       return []
     }
-  },*/
+  },
   
   async askClaude(prompt:string) {
     try {
