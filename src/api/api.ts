@@ -11,18 +11,6 @@ export const $axios = axios.create({
   withCredentials: false
 })
 
-export const $axiosClaude = axios.create({
-  baseURL: "/api/claude/", //"https://api.anthropic.com/v1/",
-  headers: {
-    "x-api-key": import.meta.env.VITE_CLAUDE_KEY,
-    "anthropic-version": "2023-06-01",
-    "content-type": "application/json",
-    "anthropic-dangerous-direct-browser-access": "true",
-  },
-  withCredentials: true
-
-})
-
 $axios.interceptors.request.use(async function (config) {
   const token = await localforage.getItem("portfolio-token")
   // no token means the request does not require authentication, user not logged in
