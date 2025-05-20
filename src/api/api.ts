@@ -1,5 +1,5 @@
 import axios from "axios";
-import localforage from "localforage"
+import * as localforage from "localforage"
 import jwtDecode from "jwt-decode"
 
 export const $axios = axios.create({
@@ -18,7 +18,7 @@ $axios.interceptors.request.use(async function (config) {
     return config;
   }
   // user must be logged in, check if token is expired
-  const decodedToken = jwtDecode<any>(token);
+  const decodedToken = jwtDecode<any>(token.toString());
   if (decodedToken.exp < Date.now() / 1000) {
     const controller = new AbortController();
     controller.abort()
