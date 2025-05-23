@@ -2,9 +2,7 @@ import "./App.css"
 import Router from "./routing/Router"
 import AI from "@/api/ai"
 
-AI.askClaude(
-  "Hello, Claude! Can you explain quantum computing in simple terms?"
-)
+AI.askClaude("Provide an analysis of AAPL 2024 4th quarter earnings report")
   .then((response) => {
     console.log("Claude response: ", response.data)
   })
