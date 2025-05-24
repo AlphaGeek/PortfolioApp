@@ -5,7 +5,6 @@ export default {
     try {
       const data = {prompt}
       const response = await $axios.post('/api/v1/ai/askOpenAI', data)
-      console.log("Response from OpenAI: ", response.data)
       return response.data
     } catch(e) {
       console.error("An error occurred while fetching the Open AI results: ", e)
@@ -24,7 +23,6 @@ export default {
         }
       }
       const response = await $axios.post('/api/v1/ai/askClaude', data)
-      console.log("Response from Claude: ", response.data)
       return response.data
     } catch(e) {
       console.error("An error occurred while fetching the Claude results: ", e)

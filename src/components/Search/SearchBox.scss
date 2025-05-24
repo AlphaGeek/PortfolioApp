@@ -18,6 +18,9 @@ div.search-box {
         border: 0;
         background: transparent;
         padding: 3px;
+        color: black;
+        max-height: 30px;
+        font-size: 1.7rem;
         &:hover {
           border: 0 !important;
           box-shadow: none !important;

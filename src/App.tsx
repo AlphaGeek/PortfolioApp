@@ -2,7 +2,7 @@ import "./App.css"
 import Router from "./routing/Router"
 import AI from "@/api/ai"
 
-AI.askClaude("Provide an analysis of AAPL 2024 4th quarter earnings report")
+/*AI.askClaude("Provide an analysis of AAPL 2024 4th quarter earnings report")
   .then((response) => {
     console.log("Claude response: ", response.data)
   })
@@ -11,7 +11,7 @@ AI.askClaude("Provide an analysis of AAPL 2024 4th quarter earnings report")
       "An error occurred while fetching the search results: ",
       error
     )
-  })
+  })*/
 
 /*AI.askOpenAI(
   "Hello, Open AI! Can you explain quantum computing in simple terms?"
@@ -29,7 +29,7 @@ AI.askClaude("Provide an analysis of AAPL 2024 4th quarter earnings report")
 
 function App() {
   return (
-    <div className="app bg-[#f5f5f5]">
+    <div className="app bg-stone-50">
       <div className="app-content">
         <Router />
       </div>

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux"
 import HighchartsReact from "highcharts-react-official"
 import MarketDataApi from "@/api/marketData"
 import { useNavigate } from "react-router-dom"
-import moment from "moment"
+import Widget from "@/components/Widget/Widget"
 
 function PriceChart(props: any) {
   const navigate = useNavigate()
@@ -16,7 +16,6 @@ function PriceChart(props: any) {
   const [chartOptions, setChartOptions] = useState(timeSeriesChart)
 
   useEffect(() => {
-    console.log("useEffect props.symbol", props.symbol)
     if (!props?.symbol) {
       navigate("/")
     }
@@ -27,7 +26,6 @@ function PriceChart(props: any) {
         parseFloat(pData[key]["4. close"]),
       ])
 
-      console.log("chart data", chartData)
       const newOptions = {
         ...timeSeriesChart,
         series: [
@@ -52,12 +50,37 @@ function PriceChart(props: any) {
           },
         },
       }
-      console.log("newOptions", newOptions)
       setChartOptions(newOptions)
     })
   }, [props.symbol, props.title, props.xAxisTitle, props.yAxisTitle])
-
-  return <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+  const chart = (
+    <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+  )
+  const settings = [
+    {
+      label: "Save",
+      icon: "pi pi-fw pi-plus",
+      command: () => {},
+    },
+    {
+      label: "Delete",
+      icon: "pi pi-fw pi-trash",
+      command: () => {},
+    },
+  ]
+  return (
+    <Widget
+      headerLeft="This is a chart"
+      headerCenter="Center"
+      headerRight="Right"
+      content={chart}
+      minWidth="33vw"
+      maxWidth="33vw"
+      minHeight="300px"
+      maxHeight="600px"
+      settings={settings}
+    ></Widget>
+  )
 }
 
 export default PriceChart

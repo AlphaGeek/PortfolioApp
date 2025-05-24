@@ -34,7 +34,7 @@ function AppHeader() {
   }
 
   return (
-    <div className="app-header">
+    <div className="app-header bg-stone-100 content-center flex justify-between mb-1">
       <div className="app-header-section app-header-left"></div>
 
       <div className="app-header-section app-header-center">
