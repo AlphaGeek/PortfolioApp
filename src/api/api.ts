@@ -13,17 +13,14 @@ export const $axios = axios.create({
 
 $axios.interceptors.request.use(async function (config) {
   const token = await localforage.getItem("portfolio-token")
-  // no token means the request does not require authentication, user not logged in
   if (!token) {
     return config;
   }
-  // user must be logged in, check if token is expired
   const decodedToken = jwtDecode<any>(token.toString());
-  if (decodedToken.exp < Date.now() / 1000) {
-    const controller = new AbortController();
-    controller.abort()
-    window.location.href = "/login"
-  }
-  config.headers.Authorization =  `Bearer ${token}`
+  if (decodedToken.exp > Date.now() / 1000) {
+    config.headers.Authorization =  `Bearer ${token}`
+    //const controller = new AbortController();
+    //controller.abort()
+  } 
   return config;
 })

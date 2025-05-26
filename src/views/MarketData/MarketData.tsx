@@ -1,6 +1,7 @@
 import TimeSeriesChart from "./Charts/TimeSeriesChart"
-import StockChart from "./Charts/StockChart"
+import AskAI from "./AI/AskAI"
 import { useParams } from "react-router-dom"
+
 function MarketData() {
   const { symbol } = useParams()
   return (
@@ -9,7 +10,7 @@ function MarketData() {
         {symbol && symbol.trim().length > 0 && (
           <div>
             <TimeSeriesChart symbol={symbol} />
-            <StockChart symbol={symbol} />
+            <AskAI />
           </div>
         )}
       </div>

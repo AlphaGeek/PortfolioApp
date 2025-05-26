@@ -5,7 +5,7 @@ import {
   setIsAuthenticated,
   setJwtToken,
   setUserInfo,
-} from "../../store/slices/userSlice"
+} from "@/store/slices/userSlice"
 import jwt_decode from "jwt-decode"
 import { GoogleLogin } from "@react-oauth/google"
 import * as localforage from "localforage"
@@ -34,7 +34,7 @@ function AppHeader() {
   }
 
   return (
-    <div className="app-header bg-stone-100 content-center flex justify-between mb-1">
+    <div className="app-header bg-stone-100 content-center flex justify-between">
       <div className="app-header-section app-header-left"></div>
 
       <div className="app-header-section app-header-center">
