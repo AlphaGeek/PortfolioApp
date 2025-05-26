@@ -8,8 +8,8 @@ import { InputTextarea } from "primereact/inputtextarea"
 import AI from "@/api/ai"
 
 export default function AskAI() {
-  const [aiModel, setAIModel] = useState("ChatGPT")
-  const [placeholder, setPlaceholder] = useState("Ask ChatGPT a question...")
+  const [aiModel, setAIModel] = useState("Claude")
+  const [placeholder, setPlaceholder] = useState("Ask Claude a question...")
   const [query, setQuery] = useState("")
   const [answer, setAnswer] = useState("")
 
@@ -63,23 +63,10 @@ export default function AskAI() {
         return (
           <div className="flex flex-col items-start justify-center h-full p-[10px]">
             <div className="font-bold mb-2">AI Model</div>
-            <div className="flex align-items-center mb-3 ml-4">
-              <RadioButton
-                inputId="chatgpt"
-                name="aiModel"
-                value="ChatGPT"
-                onChange={(e: any) => {
-                  setAIModel(e.value)
-                  setPlaceholder("Ask ChatGPT a question...")
-                  setAnswer("")
-                }}
-                checked={aiModel === "ChatGPT"}
-              />
-              <label htmlFor="ingredient1" className="ml-2">
-                ChatGPT
-              </label>
-            </div>
-            <div className="flex align-items-center mb-3 ml-4">
+            <div
+              className="flex mb-3 ml-4"
+              style={{ alignItems: "anchor-center" }}
+            >
               <RadioButton
                 inputId="claude"
                 name="aiModel"
@@ -93,6 +80,25 @@ export default function AskAI() {
               />
               <label htmlFor="ingredient2" className="ml-2">
                 Claude
+              </label>
+            </div>
+            <div
+              className="flex mb-3 ml-4"
+              style={{ alignItems: "anchor-center" }}
+            >
+              <RadioButton
+                inputId="chatgpt"
+                name="aiModel"
+                value="ChatGPT"
+                onChange={(e: any) => {
+                  setAIModel(e.value)
+                  setPlaceholder("Ask ChatGPT a question...")
+                  setAnswer("")
+                }}
+                checked={aiModel === "ChatGPT"}
+              />
+              <label htmlFor="ingredient1" className="ml-2">
+                ChatGPT
               </label>
             </div>
           </div>
