@@ -1,0 +1,8 @@
+{
+  "packages": [
+    "numpy",
+    "pandas",
+    "pytorch",
+    "scikit-learn"
+  ]
+}

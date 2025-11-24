@@ -22,7 +22,7 @@ export default {
           "anthropic-dangerous-direct-browser-access": "true"
         }
       }
-      const response = await $axios.post('/api/v1/ai/askClaude', data)
+      const response = await $axios.post('/api/v1/ai/askClaude', data, config)
       return response.data
     } catch(e) {
       console.error("An error occurred while fetching the Claude results: ", e)

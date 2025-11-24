@@ -19,8 +19,6 @@ $axios.interceptors.request.use(async function (config) {
   const decodedToken = jwtDecode<any>(token.toString());
   if (decodedToken.exp > Date.now() / 1000) {
     config.headers.Authorization =  `Bearer ${token}`
-    //const controller = new AbortController();
-    //controller.abort()
   } 
   return config;
 })

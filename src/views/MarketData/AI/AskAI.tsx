@@ -24,13 +24,12 @@ export default function AskAI() {
             console.error("Error asking OpenAI:", error)
           })
       } else if (aiModel === "Claude") {
-        AI.askClaude(query)
-          .then((response: any) => {
-            setAnswer(response)
-          })
-          .catch((error: any) => {
-            console.error("Error asking Claude:", error)
-          })
+        AI.askClaude(query).then((response: any) => {
+          setAnswer(response)
+        })
+        .catch((error: any) => {
+          console.error("Error asking Claude:", error)
+        })
       }
     }
   }
@@ -49,7 +48,7 @@ export default function AskAI() {
             }
           }}
         />
-        <Button label="Ask AI" className="w-[100px] ml-4" onClick={askAI} />
+        <Button label="Ask" className="w-[100px] ml-4 !bg-blue-500" onClick={askAI} />
       </div>
       <div className="mt-4 w-full">
         <InputTextarea value={answer} rows={10} className="w-full" readOnly />

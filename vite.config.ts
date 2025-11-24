@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 
+
 export default defineConfig({
   server: {
     host: '127.0.0.1',
@@ -15,7 +16,12 @@ export default defineConfig({
       }
     }
   },
-  plugins: [react(), tailwindcss()],
+  plugins: [react({
+      babel: {
+        plugins: ['babel-plugin-react-compiler'],
+      },
+    }
+  ), tailwindcss()],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
