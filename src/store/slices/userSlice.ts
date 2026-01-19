@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import UserApi from '@/api/user'
+import UserApi from '@/api/userApi'
 import * as localforage from 'localforage'
 
 export interface UserInfo {

@@ -29,92 +29,92 @@ function StockChart(props: { symbol: string }) {
         currencyId: "EUR",
       })
 
-    ;(async () => {
-      await NVIDIAPriceConnector.load()
+      ; (async () => {
+        await NVIDIAPriceConnector.load()
 
-      const {
-        [`${NVIDIACorpId}_Open`]: open,
-        [`${NVIDIACorpId}_High`]: high,
-        [`${NVIDIACorpId}_Low`]: low,
-        [`${NVIDIACorpId}_Close`]: close,
-        [`${NVIDIACorpId}_Volume`]: volume,
-        Date: date,
-      } = NVIDIAPriceConnector.table.getColumns()
+        const {
+          [`${NVIDIACorpId}_Open`]: open,
+          [`${NVIDIACorpId}_High`]: high,
+          [`${NVIDIACorpId}_Low`]: low,
+          [`${NVIDIACorpId}_Close`]: close,
+          [`${NVIDIACorpId}_Volume`]: volume,
+          Date: date,
+        } = NVIDIAPriceConnector.table.getColumns()
 
-      const ohlc = [],
-        volumeSeriesData = [],
-        dataLength = date.length
+        const ohlc = [],
+          volumeSeriesData = [],
+          dataLength = date.length
 
-      for (let i = 0; i < dataLength; i += 1) {
-        ohlc.push([date[i], open[i], high[i], low[i], close[i]])
+        for (let i = 0; i < dataLength; i += 1) {
+          ohlc.push([date[i], open[i], high[i], low[i], close[i]])
 
-        volumeSeriesData.push([date[i], volume[i]])
-      }
+          volumeSeriesData.push([date[i], volume[i]])
+        }
 
-      Highcharts.stockChart("container", {
-        yAxis: [
-          {
-            labels: {
-              align: "left",
-            },
-            height: "80%",
-            resize: {
-              enabled: true,
-            },
-          },
-          {
-            labels: {
-              align: "left",
-            },
-            top: "80%",
-            height: "20%",
-            offset: 0,
-          },
-        ],
-        rangeSelector: {
-          selected: 4,
-        },
-        tooltip: {
-          shape: "square",
-          headerShape: "callout",
-          borderWidth: 0,
-          shadow: false,
-          fixed: true,
-        },
-        series: [
-          {
-            type: "candlestick",
-            id: "nvidia-candlestick",
-            name: "NVIDIA Corp Stock Price",
-            data: ohlc,
-            dataGrouping: {
-              groupPixelWidth: 20,
-            },
-          },
-          {
-            type: "column",
-            id: "nvidia-volume",
-            name: "NVIDIA Volume",
-            data: volumeSeriesData,
-            yAxis: 1,
-          },
-        ],
-        responsive: {
-          rules: [
+        Highcharts.stockChart("container", {
+          yAxis: [
             {
-              condition: {
-                maxWidth: 800,
+              labels: {
+                align: "left",
               },
-              chartOptions: {
-                rangeSelector: {
-                  inputEnabled: false,
-                },
+              height: "80%",
+              resize: {
+                enabled: true,
               },
+            },
+            {
+              labels: {
+                align: "left",
+              },
+              top: "80%",
+              height: "20%",
+              offset: 0,
             },
           ],
-        },
-      })
-    })()
+          rangeSelector: {
+            selected: 4,
+          },
+          tooltip: {
+            shape: "square",
+            headerShape: "callout",
+            borderWidth: 0,
+            shadow: false,
+            fixed: true,
+          },
+          series: [
+            {
+              type: "candlestick",
+              id: "nvidia-candlestick",
+              name: "NVIDIA Corp Stock Price",
+              data: ohlc,
+              dataGrouping: {
+                groupPixelWidth: 20,
+              },
+            },
+            {
+              type: "column",
+              id: "nvidia-volume",
+              name: "NVIDIA Volume",
+              data: volumeSeriesData,
+              yAxis: 1,
+            },
+          ],
+          responsive: {
+            rules: [
+              {
+                condition: {
+                  maxWidth: 800,
+                },
+                chartOptions: {
+                  rangeSelector: {
+                    inputEnabled: false,
+                  },
+                },
+              },
+            ],
+          },
+        })
+      })()
   })
 
   return (

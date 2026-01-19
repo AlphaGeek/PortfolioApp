@@ -11,8 +11,7 @@ function SearchResults(props: any) {
             >
               <div>{result.name}</div>
               <div>
-                <span>{result.symbol}</span>&nbsp;:&nbsp;
-                <span>{result.region}</span>
+                <span>{result.symbol}</span>
               </div>
             </div>
           ))}

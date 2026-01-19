@@ -18,16 +18,16 @@ export default {
   async searchStocks(searchTerm:string) {
     try {
       const response = await $axios.get(`/api/v1/search/${searchTerm}`)
-      return response.data.filter((match: any) => match.type === "Equity")
+      return response.data
     } catch(e) {
       console.error("An error occurred while fetching the search results: ", e)
       return []
     }
   },
 
-  async getTimeSeriesWeekly(symbol:string) {
+  async getTimeSeriesDaily(symbol:string) {
     try {
-      const response = await $axios.get(`/api/v1/issuer/${symbol}/timeSeries/weekly`)
+      const response = await $axios.get(`/api/v1/issuer/${symbol}/timeSeries/daily`)
       return response.data
     } catch(e) {
       console.error("An error occurred while fetching the search results", e)

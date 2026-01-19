@@ -22,6 +22,7 @@ export const marketDataSlice = createSlice({
   reducers: {
     setCompany: (state, action) => {
       state.company = action.payload
+      console.log('Company set to:', state.company)
     }
   }
 })

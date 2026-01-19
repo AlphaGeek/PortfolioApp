@@ -5,7 +5,7 @@ import { InputText } from "primereact/inputtext"
 import { Button } from "primereact/button"
 import { InputTextarea } from "primereact/inputtextarea"
 
-import AI from "@/api/ai"
+import AI from "@/api/aiApi"
 
 export default function AskAI() {
   const [aiModel, setAIModel] = useState("Claude")

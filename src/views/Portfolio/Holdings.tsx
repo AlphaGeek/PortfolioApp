@@ -1,4 +1,4 @@
-import { DataTable, Column } from 'primevue/datatable';
+import { DataTable } from 'primereact/datatable';
 
 function Holdings(props) {
   return (

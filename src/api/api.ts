@@ -16,6 +16,7 @@ $axios.interceptors.request.use(async function (config) {
   if (!token) {
     return config;
   }
+  //console.log("token", token)
   const decodedToken = jwtDecode<any>(token.toString());
   if (decodedToken.exp > Date.now() / 1000) {
     config.headers.Authorization =  `Bearer ${token}`
