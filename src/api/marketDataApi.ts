@@ -35,6 +35,16 @@ export default {
     }
   },
 
+  async getFredSeries(seriesId: string): Promise<[string, number][]> {
+    try {
+      const response = await $axios.get(`/api/v1/fred/${seriesId}`)
+      return response.data
+    } catch(e) {
+      console.error(`Error fetching FRED series ${seriesId}`, e)
+      return []
+    }
+  },
+
   async getEarningsCalendar() {
     try {
       const response = await $axios.get('/api/v1/earnings_cal')

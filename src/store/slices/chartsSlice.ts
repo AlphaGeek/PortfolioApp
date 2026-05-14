@@ -6,6 +6,7 @@ const initialState = {
     chart: {
       height: "300px",
       type: "area",
+      backgroundColor: "transparent",
     },
     title: {
       text: "",

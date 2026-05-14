@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import "./SearchBox.scss"
 import "./SearchResults"
 import { InputText } from "primereact/inputtext"
@@ -25,8 +25,8 @@ function SearchBox() {
     navigate("/market-data/" + event.symbol)
   }
 
-  function inputKeyPressed(key: any) {
-    if (key.code === "Enter") {
+  function inputKeyPressed(key: React.KeyboardEvent) {
+    if (key.key === "Enter") {
       search()
     }
   }
@@ -36,7 +36,7 @@ function SearchBox() {
       <div className="search-input-container">
         <div className="search-input">
           <InputText
-            onKeyUp={(key) => inputKeyPressed(key)}
+            onKeyDown={(key) => inputKeyPressed(key)}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             type="text"
