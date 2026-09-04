@@ -1,74 +1,44 @@
+/* ════════════════════════════════════════════════════════════════════
+   FinAI — global stylesheet. Keep Tailwind + PrimeReact, then layer the
+   Glass UI tokens / utilities / app styles on top, and reset the Vite
+   starter's centering body so the app fills the viewport.
+   ════════════════════════════════════════════════════════════════════ */
 @import "tailwindcss";
 @import "primeicons/primeicons.css";
 @import "primereact/resources/primereact.min.css";
-@import "primereact/resources/primereact.min.css";
 @import "primereact/resources/themes/tailwind-light/theme.css";
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "./styles/glass-tokens.css";
+@import "./styles/glass.css";
+@import "./styles/finai-ui.css";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+:root { color-scheme: light dark; }
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+* { box-sizing: border-box; }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+html, body { margin: 0; padding: 0; min-height: 100%; }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: var(--tracking-snug);
+  background: var(--background);
+  color: var(--foreground);
+  /* override the Vite starter that centered everything */
+  display: block;
+  place-items: initial;
+  min-width: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+#root { min-height: 100vh; }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+/* neutralize the Vite starter button chrome so glass buttons render clean */
+button { font-family: inherit; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { opacity: 0.9; }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+::selection { background: color-mix(in oklch, var(--accent) 30%, transparent); }

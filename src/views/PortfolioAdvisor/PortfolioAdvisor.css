@@ -256,12 +256,34 @@
   padding: 20px;
 }
 
+.picks-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
 .picks-title {
   font-size: 1rem;
   font-weight: 700;
   color: #2d3436;
-  margin: 0 0 16px;
+  margin: 0;
 }
+
+.trade-all-btn {
+  padding: 6px 18px;
+  background: #00b894;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+.trade-all-btn:hover { opacity: 0.85; }
 
 .picks-table-wrap { overflow-x: auto; }
 
@@ -295,6 +317,13 @@
 .pick-sector { font-size: 0.78rem; color: #636e72; }
 .pick-weight { font-weight: 700; }
 .pick-amount { font-weight: 600; color: #2d3436; }
+.pick-price { font-weight: 600; color: #636e72; font-size: 0.78rem; }
+
+.pick-actions {
+  display: flex;
+  gap: 6px;
+  white-space: nowrap;
+}
 
 .pick-score-bar {
   display: flex;
@@ -330,6 +359,189 @@
 }
 
 .pick-research-btn:hover { background: #0984e3; color: #fff; }
+
+.pick-trade-btn {
+  padding: 4px 10px;
+  background: #00b894;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+.pick-trade-btn:hover { opacity: 0.85; }
+
+/* Trade Modal */
+.trade-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.trade-modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px;
+  width: 420px;
+  max-width: 90vw;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+.trade-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #b2bec3;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.trade-modal-close:hover { color: #2d3436; }
+
+.trade-modal-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #2d3436;
+  margin: 0 0 16px;
+}
+
+.trade-modal-detail {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+}
+
+.trade-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 0.85rem;
+  color: #636e72;
+}
+
+.trade-detail-val {
+  font-weight: 700;
+  color: #2d3436;
+}
+
+.trade-modal-form {
+  margin-bottom: 16px;
+}
+
+.trade-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #636e72;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 6px;
+}
+
+.trade-select,
+.trade-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #dfe6e9;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: #f8f9fa;
+  color: #2d3436;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.trade-select { margin-bottom: 12px; }
+
+.trade-create-portfolio {
+  margin-top: 4px;
+}
+
+.trade-input {
+  width: 100%;
+}
+
+.trade-msg {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.trade-msg-success {
+  background: #e6fff8;
+  color: #00b894;
+  border: 1px solid #b2dfdb;
+}
+
+.trade-msg-error {
+  background: #fff5f5;
+  color: #d63031;
+  border: 1px solid #fecaca;
+}
+
+.trade-error-list {
+  max-height: 160px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+}
+
+.trade-error-item {
+  padding: 4px 8px;
+  font-size: 0.78rem;
+  color: #d63031;
+  font-family: monospace;
+  line-height: 1.5;
+}
+
+.trade-modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.trade-btn-cancel {
+  padding: 8px 20px;
+  background: #f5f6fa;
+  border: 1px solid #dfe6e9;
+  border-radius: 8px;
+  color: #636e72;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.trade-btn-cancel:hover { background: #e9ecef; }
+
+.trade-btn-confirm {
+  padding: 8px 20px;
+  background: #00b894;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.trade-btn-confirm:hover:not(:disabled) { opacity: 0.85; }
+.trade-btn-confirm:disabled { opacity: 0.5; cursor: default; }
 
 /* Methodology */
 .methodology-note {

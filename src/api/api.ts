@@ -5,10 +5,9 @@ import jwtDecode from "jwt-decode"
 export const $axios = axios.create({
   baseURL: "http://127.0.0.1:5000",
   headers: {
-    "Access-Control-Allow-Origin": "*",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   },
-  withCredentials: false
+  withCredentials: false,
 })
 
 $axios.interceptors.request.use(async function (config) {

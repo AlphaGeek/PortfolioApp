@@ -1,0 +1,120 @@
+/* ════════════════════════════════════════════════════════════════════
+   FinAI — app component styles (Glass UI). Pairs with glass-tokens.css
+   + glass.css. Scoped class names so it won't collide with Tailwind /
+   PrimeReact.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── app shell ── */
+.finai-app { min-height: 100vh; display: flex; flex-direction: column;
+  background: var(--background); color: var(--foreground);
+  font-family: var(--font-sans); letter-spacing: var(--tracking-snug); }
+.finai-main { flex: 1; padding: 14px 22px 60px; max-width: 1480px; width: 100%; margin: 0 auto; }
+.finai-bg-orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; }
+.finai-content { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ── grids ── */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.macro-main { display: grid; grid-template-columns: 1.55fr 1fr; gap: 18px; }
+.theme-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.port-summary { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+.port-grid { display: grid; grid-template-columns: 320px 1fr; gap: 18px; }
+.port-grid > * { min-width: 0; }
+.advisor-inputs { display: grid; grid-template-columns: 1.4fr 1.4fr 1.2fr 1fr; gap: 14px; align-items: start; }
+.advisor-summary { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.advisor-result-grid { display: grid; grid-template-columns: 300px 1fr; gap: 18px; }
+.advisor-result-grid > * { min-width: 0; }
+.research-grid { display: grid; grid-template-columns: 340px 1fr; gap: 18px; }
+.research-grid > * { min-width: 0; }
+.research-top { display: grid; grid-template-columns: 1fr 360px; gap: 18px; }
+.research-top > * { min-width: 0; }
+.research-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.research-pair > * { min-width: 0; }
+.metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+.legend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.screener-filters { display: grid; grid-template-columns: 1.3fr 1.6fr 1fr auto; gap: 16px; align-items: end; }
+.risk-row { display: flex; gap: 10px; }
+.filter-field { display: flex; flex-direction: column; gap: 6px; }
+
+/* ── tables ── */
+.fin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.fin-table th { font: var(--text-label); text-transform: uppercase; letter-spacing: var(--tracking-label);
+  color: var(--muted-foreground); text-align: center; padding: 9px 12px; position: sticky; top: 0;
+  background: color-mix(in oklch, var(--card) 86%, transparent); backdrop-filter: blur(8px); z-index: 2; white-space: nowrap; }
+.fin-table td { padding: 11px 12px; border-top: 1px solid var(--border); vertical-align: middle; }
+.fin-table td.num { text-align: right; font-family: var(--font-mono); }
+.fin-table .hover-row { transition: background .15s; }
+.fin-table .hover-row:hover { background: color-mix(in oklch, var(--foreground) 4%, transparent); }
+.fin-table .sortable { cursor: pointer; }
+.fin-table .sortable:hover { color: var(--foreground); }
+.mini-btn { font-size: 11.5px; font-weight: 600; padding: 4px 9px; border-radius: 7px;
+  border: 1px solid var(--border); color: var(--muted-foreground); transition: all .15s; white-space: nowrap;
+  background: none; cursor: pointer; }
+.mini-btn:hover { background: color-mix(in oklch, var(--foreground) 6%, transparent); border-color: transparent; }
+
+/* ── form controls ── */
+.fin-input, .fin-select { height: 40px; padding: 0 12px; border-radius: 11px; border: 1px solid var(--border);
+  background: color-mix(in oklch, var(--foreground) 4%, transparent); color: var(--foreground); font-size: 13.5px;
+  outline: none; width: 100%; font-family: inherit; }
+.fin-select { -webkit-appearance: none; appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center; padding-right: 30px; }
+.fin-input:focus, .fin-select:focus { border-color: var(--accent); }
+.fin-range { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 99px; outline: none; margin: 14px 0;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) var(--p,50%), var(--muted) var(--p,50%)); width: 100%; }
+.fin-range::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 99px;
+  background: var(--accent); border: 3px solid var(--card); box-shadow: 0 1px 6px rgba(0,0,0,.3); cursor: pointer; }
+.fin-range::-moz-range-thumb { width: 14px; height: 14px; border-radius: 99px; background: var(--accent);
+  border: 3px solid var(--card); cursor: pointer; }
+
+/* ── spinner ── */
+.fin-spinner { width: 36px; height: 36px; border-radius: 99px; border: 3px solid var(--border);
+  border-top-color: var(--accent); animation: fin-spin .8s linear infinite; }
+@keyframes fin-spin { to { transform: rotate(360deg); } }
+
+/* ── AI brief (markdown) ── */
+.brief { font-size: 13.5px; line-height: 1.65; color: var(--card-foreground); }
+.brief h1, .brief h2 { font-size: 16px; font-weight: 700; margin: 0 0 14px; letter-spacing: -0.02em; }
+.brief h3 { font: var(--text-label); text-transform: uppercase; letter-spacing: var(--tracking-label);
+  color: var(--accent); margin: 18px 0 8px; }
+.brief p { margin: 0 0 10px; }
+.brief ul { margin: 0 0 10px; padding-left: 18px; }
+.brief li { margin-bottom: 6px; }
+.brief strong { color: var(--foreground); font-weight: 600; }
+.brief hr { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+
+/* ── Ask AI bubbles ── */
+.ai-bubble { max-width: 90%; padding: 10px 13px; border-radius: 14px; font-size: 13px; line-height: 1.55; }
+.ai-bubble.ai { align-self: flex-start; background: color-mix(in oklch, var(--foreground) 5%, transparent);
+  border: 1px solid var(--border); border-bottom-left-radius: 4px; }
+.ai-bubble.user { align-self: flex-end; background: var(--accent); color: var(--accent-foreground); border-bottom-right-radius: 4px; }
+.suggest-chip { font-size: 11.5px; padding: 6px 11px; border-radius: 99px; border: 1px solid var(--border);
+  color: var(--muted-foreground); transition: all .15s; background: none; cursor: pointer; }
+.suggest-chip:hover { color: var(--accent); border-color: color-mix(in oklch, var(--accent) 40%, transparent); }
+.fin-dots { display: inline-flex; gap: 4px; }
+.fin-dots i { width: 6px; height: 6px; border-radius: 99px; background: var(--muted-foreground); animation: fin-blink 1.2s infinite; font-style: normal; }
+.fin-dots i:nth-child(2) { animation-delay: .2s; } .fin-dots i:nth-child(3) { animation-delay: .4s; }
+@keyframes fin-blink { 0%,60%,100% { opacity: .3; } 30% { opacity: 1; } }
+
+/* ── theme card hover ── */
+.theme-card { transition: transform .2s, border-color .2s; cursor: pointer; }
+.theme-card:hover { transform: translateY(-2px); border-color: color-mix(in oklch, var(--accent) 35%, transparent); }
+
+/* ── status / connection ── */
+.conn-pill { display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 11px; border-radius: 99px;
+  border: 1px solid var(--border); background: color-mix(in oklch, var(--foreground) 3%, transparent);
+  font-size: 11.5px; font-family: var(--font-mono); color: var(--muted-foreground); }
+
+/* ── responsive ── */
+@media (max-width: 1200px) {
+  .kpi-grid, .theme-grid { grid-template-columns: repeat(2, 1fr); }
+  .macro-main, .port-grid, .advisor-result-grid, .research-grid, .research-top { grid-template-columns: 1fr; }
+  .port-summary, .advisor-summary { grid-template-columns: repeat(3, 1fr); }
+  .advisor-inputs { grid-template-columns: 1fr 1fr; }
+  .screener-filters { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .kpi-grid, .theme-grid, .port-summary, .advisor-summary, .advisor-inputs, .screener-filters,
+  .research-pair, .metrics-grid, .risk-row { grid-template-columns: 1fr; }
+  .risk-row { flex-direction: column; }
+  .finai-main { padding: 12px 14px 50px; }
+}

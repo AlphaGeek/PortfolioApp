@@ -9,6 +9,8 @@ export interface Portfolio {
 export interface Holding {
   symbol: string
   numShares: number
+  avgPrice: number | null
+  currentPrice: number | null
 }
 
 export interface TradeRequest {

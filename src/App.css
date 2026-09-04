@@ -1,23 +1,8 @@
-.app {
-  text-align: center;
-  height: 100vh;
-  min-width: 100vw;
-  margin: 0px;
+/* FinAI — app shell. The heavy lifting lives in styles/finai-ui.css;
+   this just keeps the import in App.tsx valid and pins the shell layout. */
+.finai-app {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;    
-  div.app-content {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    min-width: 100vw;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
+  box-sizing: border-box;
 }
-
-.app-link {
-  color: #61dafb;
-}
-
-

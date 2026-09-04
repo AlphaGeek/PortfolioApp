@@ -1,0 +1,175 @@
+/* ════════════════════════════════════════════════════════════════════
+   GLASS UI — COLOR & TYPE FOUNDATIONS
+   Source: lemuayala/glass-ui  (app/globals.css, lib/glass-core/*)
+   A glassmorphism design system — iOS-style frosted-glass primitives on a
+   soft warm-white (light) or premium cool-neutral (dark) shell.
+
+   Color space is OKLCH throughout (matches the source repo exactly).
+   Fonts: Geist (sans) + Geist Mono — loaded via <link> in index.html.
+   ════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ───────────── LIGHT — soft warm-white iOS shell (default) ───────────── */
+  --background: oklch(0.985 0.003 260);   /* near-white, faint cool cast */
+  --foreground: oklch(0.18 0.006 260);    /* near-black ink */
+
+  --card: oklch(1 0 0);                   /* pure white surface */
+  --card-foreground: oklch(0.18 0.006 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.006 260);
+
+  --primary: oklch(0.6 0.2 250);          /* iOS system blue */
+  --primary-foreground: oklch(0.99 0 0);
+  --accent: oklch(0.6 0.2 250);
+  --accent-foreground: oklch(0.99 0 0);
+
+  --secondary: oklch(0.96 0.005 260);
+  --secondary-foreground: oklch(0.18 0.006 260);
+  --muted: oklch(0.96 0.005 260);
+  --muted-foreground: oklch(0.5 0.01 260);
+
+  --destructive: oklch(0.6 0.22 25);      /* iOS red */
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --border: oklch(0 0 0 / 0.08);
+  --input: oklch(0 0 0 / 0.08);
+  --ring: oklch(0.6 0.2 250);
+
+  /* Data-viz / chart ramp (blue → teal → green → amber → red) */
+  --chart-1: oklch(0.6 0.2 250);
+  --chart-2: oklch(0.65 0.16 200);
+  --chart-3: oklch(0.7 0.14 160);
+  --chart-4: oklch(0.7 0.18 60);
+  --chart-5: oklch(0.6 0.22 25);
+
+  /* Glass surface tokens — used by .gg-glass app-shell panels */
+  --gg-glass-tint: oklch(1 0 0 / 0.6);
+  --gg-glass-border: oklch(0 0 0 / 0.08);
+  --gg-glass-inset-light: oklch(0 0 0 / 0.04);
+  --gg-glass-inset-dark: oklch(0 0 0 / 0.06);
+  --gg-scroll-thumb: oklch(0 0 0 / 0.18);
+
+  /* ───────────── RADIUS SCALE ───────────── */
+  --radius: 0.875rem;                       /* 14px base */
+  --radius-sm: calc(var(--radius) - 4px);   /* 10px */
+  --radius-md: calc(var(--radius) - 2px);   /* 12px */
+  --radius-lg: var(--radius);               /* 14px */
+  --radius-xl: calc(var(--radius) + 4px);   /* 18px */
+
+  /* ───────────── TYPE ───────────── */
+  --font-sans: 'Geist', 'Geist Fallback', ui-sans-serif, system-ui, -apple-system, 'SF Pro Display', sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', ui-monospace, 'SF Mono', monospace;
+
+  /* Type scale — tight tracking is a brand signature */
+  --text-display: 700 88px/0.95 var(--font-sans);
+  --text-h1:      700 48px/1.05 var(--font-sans);
+  --text-h2:      700 32px/1.1  var(--font-sans);
+  --text-h3:      600 22px/1.2  var(--font-sans);
+  --text-lead:    400 20px/1.6  var(--font-sans);
+  --text-body:    400 16px/1.6  var(--font-sans);
+  --text-sm:      500 14px/1.5  var(--font-sans);
+  --text-label:   600 12px/1.4  var(--font-sans);
+  --text-mono:    400 13px/1.5  var(--font-mono);
+
+  --tracking-tight: -0.03em;
+  --tracking-snug:  -0.01em;
+  --tracking-label: 0.2em;
+
+  /* FinAI additions — P/L semantics + app shell knobs */
+  --up:   oklch(0.72 0.17 158);
+  --down: oklch(0.64 0.21 25);
+  --pad: 18px;
+  --orb-1: 0.13; --orb-2: 0.11; --orb-3: 0.08;
+}
+
+/* ───────────── DARK — premium iOS dark with cool neutrals ───────────── */
+.dark {
+  --background: oklch(0.13 0.005 260);
+  --foreground: oklch(0.985 0 0);
+
+  --card: oklch(0.17 0.006 260);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.17 0.006 260);
+  --popover-foreground: oklch(0.985 0 0);
+
+  --primary: oklch(0.7 0.18 250);
+  --primary-foreground: oklch(0.13 0.005 260);
+  --accent: oklch(0.7 0.18 250);
+  --accent-foreground: oklch(0.13 0.005 260);
+
+  --secondary: oklch(0.22 0.006 260);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.22 0.006 260);
+  --muted-foreground: oklch(0.7 0.01 260);
+
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --border: oklch(1 0 0 / 0.08);
+  --input: oklch(1 0 0 / 0.08);
+  --ring: oklch(0.7 0.18 250);
+
+  --chart-1: oklch(0.7 0.18 250);
+  --chart-2: oklch(0.75 0.15 200);
+  --chart-3: oklch(0.8 0.12 160);
+  --chart-4: oklch(0.78 0.18 60);
+  --chart-5: oklch(0.65 0.22 25);
+
+  --gg-glass-tint: oklch(0.17 0.006 260 / 0.7);
+  --gg-glass-border: oklch(1 0 0 / 0.06);
+  --gg-glass-inset-light: oklch(1 0 0 / 0.06);
+  --gg-glass-inset-dark: oklch(0 0 0 / 0.4);
+  --gg-scroll-thumb: oklch(1 0 0 / 0.12);
+
+  --orb-1: 0.30; --orb-2: 0.22; --orb-3: 0.16;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   GLASS TINTS
+   ════════════════════════════════════════════════════════════════════ */
+:root {
+  --tint-blue:   oklch(0.62 0.19 256);
+  --tint-pink:   oklch(0.65 0.23 354);
+  --tint-orange: oklch(0.7  0.18 48);
+  --tint-teal:   oklch(0.7  0.12 183);
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   SEMANTIC TYPE
+   ════════════════════════════════════════════════════════════════════ */
+body {
+  font: var(--text-body);
+  letter-spacing: var(--tracking-snug);
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1 { font: var(--text-h1); letter-spacing: var(--tracking-tight); text-wrap: balance; }
+h2 { font: var(--text-h2); letter-spacing: var(--tracking-tight); text-wrap: balance; }
+h3 { font: var(--text-h3); letter-spacing: var(--tracking-snug); }
+
+.display { font: var(--text-display); letter-spacing: var(--tracking-tight); text-wrap: balance; }
+.lead    { font: var(--text-lead); color: var(--muted-foreground); }
+small, .text-sm { font: var(--text-sm); }
+
+.eyebrow, .label {
+  font: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--muted-foreground);
+}
+
+code, kbd, pre, .mono { font: var(--text-mono); }
+
+.text-accent {
+  background: linear-gradient(120deg,
+    color-mix(in oklch, var(--foreground) 88%, var(--primary)) 0%,
+    color-mix(in oklch, var(--primary) 70%, oklch(0.72 0.16 280)) 55%,
+    color-mix(in oklch, var(--foreground) 82%, oklch(0.75 0.14 320)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

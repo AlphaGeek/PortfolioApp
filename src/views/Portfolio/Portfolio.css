@@ -89,6 +89,13 @@
 
 .holding-shares { color: #2d3436; }
 
+.holding-price {
+  font-family: monospace;
+  font-size: 0.85rem !important;
+  color: #2d3436;
+  white-space: nowrap;
+}
+
 .holding-actions {
   text-align: right;
   white-space: nowrap;

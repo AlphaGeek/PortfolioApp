@@ -157,6 +157,7 @@ export interface PortfolioPick {
   industry: string
   weight: number
   dollarAmount: number
+  currentPrice: number | null
   pe: number | null
   roe: number | null
   beta: number | null

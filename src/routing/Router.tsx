@@ -8,11 +8,25 @@ import ScreenerView from "@/views/Screener/ScreenerView"
 import PortfolioAdvisor from "@/views/PortfolioAdvisor/PortfolioAdvisor"
 import AppHeader from "@/components/AppHeader/AppHeader"
 
+/* FinAI — routing. Unchanged routes; the only addition is the
+   <main className="finai-main"> wrapper that gives every page its
+   max-width, padding and scroll container under the glass header. */
 export default function Router() {
   const Layout = () => (
     <>
       <AppHeader />
-      <Outlet />
+      <main className="finai-main gg-scroll">
+        <Outlet />
+      </main>
+      <footer style={{ padding: "18px 26px", borderTop: "1px solid var(--border)", display: "flex",
+        justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+        <span style={{ fontSize: 11.5, color: "var(--muted-foreground)", fontFamily: "var(--font-mono)" }}>
+          FinAI · Quant Terminal · Data delayed · Not investment advice
+        </span>
+        <span style={{ fontSize: 11.5, color: "var(--muted-foreground)" }}>
+          Grinold-Kahn factor model
+        </span>
+      </footer>
     </>
   )
 
